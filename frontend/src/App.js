@@ -10,7 +10,7 @@ const App = () => {
       <Header/>
       <main className='py-3'>
         <Container>
-          <h1>Welcome to GearUp</h1>
+          <h1>Welcome to PayShop</h1>
         </Container>
       </main>
       <Footer/>
