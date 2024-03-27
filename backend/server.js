@@ -1,8 +1,10 @@
 import express from "express";
-// using ES module, so need to add the file format for the input (.js)
+import dotenv from "dotenv";
+dotenv.config()
+// using ES module, so need to add the file format for the import (.js)
 import products from "./data/products.js";
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 const app = express();
 app.get("/", (req, res) => {
   res.send("API is running...");
