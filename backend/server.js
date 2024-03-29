@@ -1,10 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-dotenv.config();
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 // using ES module, so need to add the file format for the import (.js)
 import productRoutes from "./routes/productRoutes.js";
 
+dotenv.config();
 const port = process.env.PORT || 5000;
 connectDB();
 const app = express();
@@ -14,5 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/products',productRoutes);
+
+app.use(notFound);
+app.use(errorHandler)
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
