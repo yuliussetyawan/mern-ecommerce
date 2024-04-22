@@ -27,6 +27,11 @@ const CartScreen = () => {
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
+
+  const checkoutHandler = () => {
+    navigate("/login?redirect=/shipping")
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -82,7 +87,7 @@ const CartScreen = () => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h2>
-                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                Subtotal ({cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
                 items
               </h2>
               $
@@ -95,6 +100,7 @@ const CartScreen = () => {
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length === 0}
+                onClick={checkoutHandler}
               >
                 Proceed To Checkout
               </Button>
