@@ -152,6 +152,7 @@ export {
   getUserProfile,
   updateUserProfile,
   getUsers,
+  logoutUser,
   deleteUser,
   getUserById,
   updateUser,
