@@ -21,7 +21,7 @@ function Header() {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate('/login');
+      navigate("/login");
     } catch (err) {
       console.error(err);
     }
@@ -66,6 +66,13 @@ function Header() {
                     <FaUser /> Sign In
                   </Nav.Link>
                 </LinkContainer>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title="Admin" id="adminmenu">
+                  <LinkContainer to="/admin/orderlist">
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>
