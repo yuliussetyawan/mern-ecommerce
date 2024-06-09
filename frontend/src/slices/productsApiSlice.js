@@ -15,8 +15,16 @@ export const productApiSlice = apiSlice.injectEndpoints({
         url: `${PRODUCTS_URL}/${productId}`
       }),
       keepUnusedDataFor: 5
-    })
+    }),
+    createProduct: builder.mutation({
+      query: () => ({
+        url: `${PRODUCTS_URL}`,
+        method: 'POST',
+      }),
+      // The invalidatesTags option is set to ['Product'], which means that after the createProduct mutation runs, any cached data associated with the 'Product' tag will be invalidated.
+      invalidatesTags: ['Product'],
+    }),
   }),
 });
 
-export const {useGetProductsQuery, useGetProductDetailsQuery} = productApiSlice;
+export const {useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation} = productApiSlice;
