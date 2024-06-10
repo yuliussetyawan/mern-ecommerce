@@ -8,23 +8,39 @@ export const productApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: PRODUCTS_URL,
       }),
+      // Use Case: Useful for scenarios where you have interdependent data and you need to ensure consistency. For example, when you fetch a list of products and later update or delete a product, the list should be re-fetched to reflect these changes.
+      providesTags: ['Product'],
       keepUnusedDataFor: 5,
     }),
     getProductDetails: builder.query({
-      query:(productId) => ({
-        url: `${PRODUCTS_URL}/${productId}`
+      query: (productId) => ({
+        url: `${PRODUCTS_URL}/${productId}`,
       }),
-      keepUnusedDataFor: 5
+      keepUnusedDataFor: 5,
     }),
     createProduct: builder.mutation({
       query: () => ({
         url: `${PRODUCTS_URL}`,
-        method: 'POST',
+        method: "POST",
       }),
       // The invalidatesTags option is set to ['Product'], which means that after the createProduct mutation runs, any cached data associated with the 'Product' tag will be invalidated.
-      invalidatesTags: ['Product'],
+      invalidatesTags: ["Product"],
+    }),
+
+    updateProduct: builder.mutation({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/${data.productId}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Product"],
     }),
   }),
 });
 
-export const {useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation} = productApiSlice;
+export const {
+  useGetProductsQuery,
+  useGetProductDetailsQuery,
+  useCreateProductMutation,
+  useUpdateProductMutation
+} = productApiSlice;
