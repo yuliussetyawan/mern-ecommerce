@@ -61,6 +61,7 @@ const ProductEditScreen = () => {
     const formData = new FormData();
     formData.append('image', e.target.files[0]);
     try {
+      // Using unwrap on this thunk action's promise allows you to directly access the returned value or handle errors in a synchronous-like manner
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
       setImage(res.image);
