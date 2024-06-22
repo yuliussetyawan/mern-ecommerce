@@ -90,4 +90,4 @@ export {
   deleteProduct,
 };
 
-export { getProducts, getProductById, createProduct, updateProduct };
+
