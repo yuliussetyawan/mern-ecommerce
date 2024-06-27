@@ -37,6 +37,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       {/* if we're on just slash and that's the index then show the homescreen */}
       <Route index={true} path="/" element={<HomeScreen />} />
+      <Route path='/page/:pageNumber' element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />} />
