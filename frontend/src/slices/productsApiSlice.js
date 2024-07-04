@@ -5,9 +5,9 @@ import { apiSlice } from "./apiSlice";
 export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({pageNumber, keyword}) => ({
+      query: ({ pageNumber, keyword }) => ({
         url: PRODUCTS_URL,
-        params: {pageNumber, keyword}
+        params: { pageNumber, keyword },
       }),
       // Use Case: Useful for scenarios where you have interdependent data and you need to ensure consistency. For example, when you fetch a list of products and later update or delete a product, the list should be re-fetched to reflect these changes.
       providesTags: ["Products"],
@@ -53,10 +53,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
     createReview: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data.productId}/reviews`,
-        method: 'POST',
+        method: "POST",
         body: data,
       }),
-      invalidatesTags: ['Product'],
+      invalidatesTags: ["Product"],
+    }),
+    getTopProducts: builder.query({
+      query: () => `${PRODUCTS_URL}/top`,
+      keepUnusedDataFor: 5,
     }),
   }),
 });
@@ -69,4 +73,5 @@ export const {
   useUploadProductImageMutation,
   useDeleteProductMutation,
   useCreateReviewMutation,
+  useGetTopProductsQuery
 } = productApiSlice;
