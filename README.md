@@ -33,11 +33,11 @@ A full-featured e-commerce platform built with the MERN stack (MongoDB, Express,
 
 Create a .env file in the root directory and add the following:
 
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your_mongodb_uri
-JWT_SECRET = your_jwt
-PAYPAL_CLIENT_ID = your_paypal_client_id
+- NODE_ENV = development
+- PORT = 5000
+- MONGO_URI = your_mongodb_uri
+- JWT_SECRET = your_jwt
+- PAYPAL_CLIENT_ID = your_paypal_client_id
 
 ### Installation Steps
 
