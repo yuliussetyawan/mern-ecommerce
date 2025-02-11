@@ -18,6 +18,15 @@ A full-featured e-commerce platform built with the MERN stack (MongoDB, Express,
 - PayPal / credit card integration
 - Database seeder (products & users)
 
+## Screenshots
+
+### Home Page
+![Home Page](frontend/src/assets/mern-ecommerce.png)
+
+### Latest Products
+![Latest Products](frontend/src/assets/mern-ecommerce-2.png)
+
+
 ## Usage
 
 ### Environment Variables
